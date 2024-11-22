@@ -14,7 +14,7 @@ class RecipeRow extends StatelessWidget {
       title: Text(recipe.label),
       subtitle: Text(recipe.totalTime),
       onTap: () {
-        Navigator.pushNamed(context, '/details', arguments: recipe);
+        Navigator.pushNamed(context, '/recipe/details', arguments: recipe);
       },
     );
   }

@@ -13,6 +13,8 @@ class SearchRouter {
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      // Ścieżka domyślna (startowa)
+      case '/':
       case '/recipe':
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -21,6 +23,7 @@ class SearchRouter {
           ),
         );
 
+      // Szczegóły przepisu
       case '/recipe/details':
         final recipe = settings.arguments;
         if (recipe is Recipe) {
@@ -36,7 +39,7 @@ class SearchRouter {
         }
 
       default:
-        return null;
+        return null; // Pozwól AppRouter obsłużyć inne trasy
     }
   }
 }

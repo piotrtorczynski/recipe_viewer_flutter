@@ -9,6 +9,8 @@ import 'widgets/recipe_row.dart';
 class RecipeSearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final recipeBloc = BlocProvider.of<RecipeBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Recipes"),
@@ -24,26 +26,26 @@ class RecipeSearchView extends StatelessWidget {
                 suffixIcon: Icon(Icons.search),
               ),
               onSubmitted: (query) {
-                context.read<RecipeBloc>().add(SearchRecipesEvent(query));
+                recipeBloc.add(SearchRecipesEvent(query));
               },
             ),
           ),
           Expanded(
             child: BlocBuilder<RecipeBloc, RecipeState>(
               builder: (context, state) {
-                if (state is RecipeInitial) {
+                if (state is RecipeInitialState) {
                   return const Center(
                       child: Text("Please use search to find your recipes"));
-                } else if (state is RecipeLoading) {
+                } else if (state is RecipeLoadingState) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state is RecipeLoaded) {
+                } else if (state is RecipeLoadedState) {
                   return ListView.builder(
                     itemCount: state.recipes.length,
                     itemBuilder: (context, index) {
                       return RecipeRow(recipe: state.recipes[index]);
                     },
                   );
-                } else if (state is RecipeError) {
+                } else if (state is RecipeErrorState) {
                   return Center(
                     child: Text(
                       state.message,

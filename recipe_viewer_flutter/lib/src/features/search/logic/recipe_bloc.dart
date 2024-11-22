@@ -6,17 +6,16 @@ import '../repository/recipe_repository.dart';
 class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   final RecipeRepository recipeRepository;
 
-  RecipeBloc(this.recipeRepository) : super(RecipeInitial());
-
-  Stream<RecipeState> mapEventToState(RecipeEvent event) async* {
-    if (event is SearchRecipesEvent) {
-      yield RecipeLoading();
+  RecipeBloc(this.recipeRepository) : super(RecipeInitialState()) {
+    // Obsługa zdarzenia SearchRecipesEvent
+    on<SearchRecipesEvent>((event, emit) async {
+      emit(RecipeLoadingState()); // Emitujemy stan ładowania
       try {
         final recipes = await recipeRepository.searchRecipes(event.query);
-        yield RecipeLoaded(recipes);
+        emit(RecipeLoadedState(recipes)); // Emitujemy stan z wynikami
       } catch (e) {
-        yield const RecipeError("Failed to fetch recipes");
+        emit(RecipeErrorState(e.toString())); // Emitujemy stan błędu
       }
-    }
+    });
   }
 }

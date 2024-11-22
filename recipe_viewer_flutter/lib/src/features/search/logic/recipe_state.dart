@@ -8,23 +8,23 @@ abstract class RecipeState extends Equatable {
   List<Object?> get props => [];
 }
 
-class RecipeInitial extends RecipeState {}
+class RecipeInitialState extends RecipeState {}
 
-class RecipeLoading extends RecipeState {}
+class RecipeLoadingState extends RecipeState {}
 
-class RecipeLoaded extends RecipeState {
+class RecipeLoadedState extends RecipeState {
   final List<Recipe> recipes;
 
-  const RecipeLoaded(this.recipes);
+  const RecipeLoadedState(this.recipes);
 
   @override
   List<Object?> get props => [recipes];
 }
 
-class RecipeError extends RecipeState {
+class RecipeErrorState extends RecipeState {
   final String message;
 
-  const RecipeError(this.message);
+  const RecipeErrorState(this.message);
 
   @override
   List<Object?> get props => [message];
