@@ -26,8 +26,6 @@ A Flutter application that allows users to search for recipes and view detailed 
 This project integrates with a recipe API to fetch recipe data.  
 API documentation: [Edamam Recipe API](https://developer.edamam.com/)
 
-### Example API Request
-
 ## 🖥️ Running the App
 
 - Clone this repository:
