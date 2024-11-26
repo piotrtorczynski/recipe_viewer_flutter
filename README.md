@@ -36,6 +36,7 @@ GET https://api.edamam.com/api/recipes/v2
 ## 🖥️ Running the App
 
 - Clone this repository:
+
 ```bash
 git clone https://github.com/piotrtorczynski/recipe_viewer_flutter.git
 ```
