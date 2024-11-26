@@ -1,0 +1,63 @@
+# Flutter/Dart specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Android specific
+android/app/google-services.json
+android/key.properties
+android/local.properties
+**/android/**/build/
+**/*.iml
+.idea/
+
+# iOS specific
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/DerivedData/
+**/xcuserdata/
+**/*.xccheckout
+**/*.moved-aside
+*.hmap
+*.ipa
+*.xcuserstate
+
+# Web specific
+web/.dart_tool/
+web/compiled/
+
+# macOS specific
+macos/Flutter/ephemeral/
+**/*.DS_Store
+**/macos/**/build/
+
+# Linux specific
+linux/flutter/generated_plugin_registrant.cc
+**/linux/**/build/
+
+# Windows specific
+windows/flutter/generated_plugin_registrant.cc
+**/windows/**/build/
+
+# Other
+**/build/
+*.log
+*.lock
+*.tmp
+*.swp
+*.idea/
+*.vscode/
+*.DS_Store
+*.class
+*.jar
+*.war
+*.ear
+*.db
+
+# Firebase (if applicable)
+firebase-debug.log
