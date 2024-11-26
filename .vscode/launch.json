@@ -5,6 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "iOS",
+            "cwd": "recipe_viewer_flutter",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "iphone"
+        },
+        {
+            "name": "Android",
+            "cwd": "recipe_viewer_flutter",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "android"
+        },
+        {
+            "name": "macOS",
+            "cwd": "recipe_viewer_flutter",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "macos"
+        },
+        {
             "name": "recipe_viewer_flutter",
             "cwd": "recipe_viewer_flutter",
             "request": "launch",
@@ -16,13 +37,19 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
-        },
+        },  
         {
             "name": "recipe_viewer_flutter (release mode)",
             "cwd": "recipe_viewer_flutter",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "All Platforms",
+            "configurations": ["Android", "iOS", "macOS"]
         }
     ]
 }

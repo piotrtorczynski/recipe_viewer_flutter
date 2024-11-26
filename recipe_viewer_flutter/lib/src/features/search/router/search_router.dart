@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../logic/recipe_bloc.dart';
-import '../models/recipe.dart';
-import '../pages/recipe_search_view.dart';
-import '../pages/recipe_detail_view.dart';
-import '../repository/recipe_repository.dart';
+import '../presentation/bloc/recipe_bloc.dart';
+import '../data/models/recipe.dart';
+import '../presentation/pages/recipe_search_view.dart';
+import '../presentation/pages/recipe_detail_view.dart';
+import '../data/repositories/recipe_repository.dart';
+import '../../../dependency_injection/dependency_injection.dart';
 
 class SearchRouter {
-  final RecipeRepository recipeRepository;
-
-  SearchRouter({required this.recipeRepository});
+  final recipeRepository = getIt<RecipeRepository>();
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -18,8 +17,8 @@ class SearchRouter {
       case '/recipe':
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (_) => RecipeBloc(recipeRepository),
-            child: RecipeSearchView(),
+            create: (_) => RecipeBloc(),
+            child: const RecipeSearchView(),
           ),
         );
 

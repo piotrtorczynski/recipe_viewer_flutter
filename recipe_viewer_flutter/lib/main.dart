@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:io';
 
-import 'src/features/search/logic/recipe_bloc.dart';
-import 'src/features/search/repository/recipe_repository.dart';
+import 'src/features/search/presentation/bloc/recipe_bloc.dart';
 import 'src/routers/app_router.dart';
+import 'src/dependency_injection/dependency_injection.dart';
+import 'src/core/network/proxy/proxy_http_overrides.dart';
 
 void main() {
+  const isDev = bool.fromEnvironment('dart.vm.product') == false;
+
+  if (isDev) {
+    HttpOverrides.global = ProxyHttpOverrides(
+        "localhost:9090"); // ProxyMan używa domyślnie tego portu
+  }
+  setupDependencies();
   runApp(RecipeApp());
 }
 
@@ -20,7 +29,7 @@ class RecipeApp extends StatelessWidget {
       providers: [
         // Udostępniamy RecipeBloc w hierarchii widgetów
         BlocProvider(
-          create: (context) => RecipeBloc(RecipeRepository()),
+          create: (context) => RecipeBloc(),
         ),
       ],
       child: MaterialApp(

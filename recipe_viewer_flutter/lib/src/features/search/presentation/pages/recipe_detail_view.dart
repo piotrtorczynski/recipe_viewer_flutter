@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../models/recipe.dart';
+import '../../data/models/recipe.dart';
 
 class RecipeDetailView extends StatelessWidget {
   final Recipe recipe;
 
-  const RecipeDetailView({Key? key, required this.recipe}) : super(key: key);
+  const RecipeDetailView({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class RecipeDetailView extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(recipe.totalTime),
+              child: Text(recipe.totalTime.toString()),
             ),
           ],
         ),

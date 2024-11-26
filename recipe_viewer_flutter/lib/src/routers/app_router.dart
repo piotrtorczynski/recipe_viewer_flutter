@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../features/search/router/search_router.dart';
-import '../features/search/repository/recipe_repository.dart';
 
 class AppRouter {
   final SearchRouter searchRouter;
-
-  AppRouter()
-      : searchRouter = SearchRouter(recipeRepository: RecipeRepository());
+  AppRouter() : searchRouter = SearchRouter();
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     // Ścieżki należące do sekcji przepisów

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../logic/recipe_bloc.dart';
-import '../logic/recipe_event.dart';
-import '../logic/recipe_state.dart';
-import 'widgets/recipe_row.dart';
+import '../bloc/recipe_bloc.dart';
+import '../bloc/recipe_event.dart';
+import '../bloc/recipe_state.dart';
+import '../widgets/recipe_row.dart';
 
 class RecipeSearchView extends StatelessWidget {
+  const RecipeSearchView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final recipeBloc = BlocProvider.of<RecipeBloc>(context);
@@ -33,10 +35,7 @@ class RecipeSearchView extends StatelessWidget {
           Expanded(
             child: BlocBuilder<RecipeBloc, RecipeState>(
               builder: (context, state) {
-                if (state is RecipeInitialState) {
-                  return const Center(
-                      child: Text("Please use search to find your recipes"));
-                } else if (state is RecipeLoadingState) {
+                if (state is RecipeLoadingState) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is RecipeLoadedState) {
                   return ListView.builder(

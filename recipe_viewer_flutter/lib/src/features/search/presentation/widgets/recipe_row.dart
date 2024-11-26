@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../models/recipe.dart';
+import '../../data/models/recipe.dart';
 
 class RecipeRow extends StatelessWidget {
   final Recipe recipe;
 
-  const RecipeRow({Key? key, required this.recipe}) : super(key: key);
+  const RecipeRow({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class RecipeRow extends StatelessWidget {
       leading:
           Image.network(recipe.image, width: 50, height: 50, fit: BoxFit.cover),
       title: Text(recipe.label),
-      subtitle: Text(recipe.totalTime),
+      subtitle: Text(recipe.totalTime.toString()),
       onTap: () {
         Navigator.pushNamed(context, '/recipe/details', arguments: recipe);
       },
