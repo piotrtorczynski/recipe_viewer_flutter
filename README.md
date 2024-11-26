@@ -28,11 +28,6 @@ API documentation: [Edamam Recipe API](https://developer.edamam.com/)
 
 ### Example API Request
 
-```http
-GET https://api.edamam.com/api/recipes/v2
-
-
-
 ## 🖥️ Running the App
 
 - Clone this repository:
